@@ -1,0 +1,65 @@
+{
+  "document_type": "PACKING_LIST",
+  "document_number": "PL-HK-2026-8812",
+  "issue_date": "2026-09-28",
+  "shipper": "ShenZhen TechComponents Global Ltd.",
+  "consignee": "Công ty Cổ phần Công nghệ Cao Hà Nội",
+  "vessel_voyage": "SITC DALIAN / V.2608S",
+  "containers": ["TGHU1234567"],
+  "seal_numbers": ["SEAL-VN-9812"],
+  "total_packages": 28,
+  "package_uom": "PALLET",
+  "total_gross_weight_kg": 4520.0,
+  "total_net_weight_kg": 4180.0,
+  "total_cbm": 58.4,
+  "items": [
+    {
+      "item_index": 1,
+      "sku": "SKU-IC-STM32",
+      "part_number": "STM32F407VGT6",
+      "description_vi": "Vi điều khiển 32-bit ARM Cortex-M4",
+      "quantity": 5000,
+      "uom": "PCS",
+      "package_count": 5,
+      "net_weight_kg": 115.0,
+      "gross_weight_kg": 120.5,
+      "po_reference": "PO-2026-HANOI-01"
+    },
+    {
+      "item_index": 2,
+      "sku": "SKU-CAP-10UF",
+      "part_number": "CAP-CER-10UF-50V",
+      "description_vi": "Tụ điện gốm nhiều lớp 10uF 50V",
+      "quantity": 20000,
+      "uom": "PCS",
+      "package_count": 10,
+      "net_weight_kg": 45.0,
+      "gross_weight_kg": 48.2,
+      "po_reference": "PO-2026-HANOI-01"
+    },
+    {
+      "item_index": 3,
+      "sku": "SKU-RES-10K",
+      "part_number": "RES-SMD-10K-0805",
+      "description_vi": "Điện trở dán bề mặt SMD 10K Ohm",
+      "quantity": 50000,
+      "uom": "PCS",
+      "package_count": 8,
+      "net_weight_kg": 22.5,
+      "gross_weight_kg": 25.0,
+      "po_reference": "PO-2026-HANOI-02"
+    },
+    {
+      "item_index": 4,
+      "sku": "SKU-DIODE-1N4148",
+      "part_number": "1N4148W-7-F",
+      "description_vi": "Đi-ốt đóng ngắt tín hiệu nhỏ SMD",
+      "quantity": 15000,
+      "uom": "PCS",
+      "package_count": 5,
+      "net_weight_kg": 18.0,
+      "gross_weight_kg": 20.0,
+      "po_reference": "PO-2026-HANOI-02"
+    }
+  ]
+}

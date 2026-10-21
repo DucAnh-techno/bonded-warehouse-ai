@@ -1,0 +1,53 @@
+{
+  "metadata": {
+    "benchmark_id": "BENCHMARK-BONDED-001",
+    "timestamp": "2026-10-10T18:59:14.917030",
+    "environment": "Windows 10 Localhost",
+    "description": "Lô hàng linh kiện bán dẫn nhập kho ngoại quan Đình Vũ, đối ứng 2 PO, 4 SKU"
+  },
+  "extraction_metrics": {
+    "sku_metrics": {
+      "gold_sku_count": 4,
+      "extracted_sku_count": 4,
+      "true_positives": 4,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "field_level_accuracy": 1.0,
+      "field_matches": {
+        "hs_code": 4,
+        "quantity": 4,
+        "unit_price": 4,
+        "total_amount": 4,
+        "po_reference": 4
+      }
+    },
+    "header_metrics": {
+      "total_fields": 0,
+      "matched_fields": 0,
+      "accuracy": 1.0
+    }
+  },
+  "validation_metrics": {
+    "expected_count": 2,
+    "detected_count": 2,
+    "true_positives": 2,
+    "false_positives": 0,
+    "false_negatives": 0,
+    "detection_precision": 1.0,
+    "detection_recall": 1.0,
+    "detection_f1": 1.0
+  },
+  "cost_and_efficiency": {
+    "model_name": "gemini-3.8-flash",
+    "total_prompt_tokens": 4250,
+    "total_candidate_tokens": 860,
+    "total_tokens": 5110,
+    "total_duration_seconds": 3.85,
+    "seconds_per_document": 0.96,
+    "total_estimated_cost_usd": 0.000577,
+    "cost_per_document_usd": 0.000144
+  }
+}

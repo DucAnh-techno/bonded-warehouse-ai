@@ -1,0 +1,27 @@
+[project]
+name = "bonded-warehouse-ai-backend"
+version = "0.1.0"
+description = "Vietnamese Bonded Warehouse AI Document Processing Backend"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "pydantic>=2.7.0",
+    "pydantic-settings>=2.3.0",
+    "sqlalchemy>=2.0.30",
+    "python-multipart>=0.0.9",
+    "google-genai>=1.0.0",
+    "google-generativeai>=0.8.0",
+    "python-dotenv>=1.0.1",
+    "aiosqlite>=0.20.0",
+    "pytest>=8.2.0",
+    "httpx>=0.27.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"

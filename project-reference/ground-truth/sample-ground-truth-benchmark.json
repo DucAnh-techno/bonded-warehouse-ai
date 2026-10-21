@@ -1,0 +1,89 @@
+{
+  "benchmark_id": "BENCHMARK-BONDED-001",
+  "shipment_code": "SHP-2026-001",
+  "description": "Lô hàng linh kiện bán dẫn nhập kho ngoại quan Đình Vũ, đối ứng 2 PO, 4 SKU",
+  "shipment_metadata": {
+    "customs_declaration_no": "100234567890",
+    "warehouse_code": "02CIR01",
+    "direction": "INBOUND",
+    "declaration_type": "C11"
+  },
+  "gold_truth_entities": {
+    "documents": {
+      "CUSTOMS_DECLARATION": {
+        "declaration_no": "100234567890",
+        "date": "2026-10-02",
+        "containers": ["TGHU1234567"],
+        "seals": ["SEAL-VN-9812"],
+        "total_declared_value_usd": 24025.0,
+        "sku_count": 4
+      },
+      "COMMERCIAL_INVOICE": {
+        "invoice_no": "INV-SZ-2026-9041",
+        "date": "2026-09-28",
+        "incoterms": "CIF HAI PHONG PORT",
+        "total_invoice_usd": 24025.0,
+        "sku_count": 4
+      },
+      "PACKING_LIST": {
+        "pl_no": "PL-HK-2026-8812",
+        "date": "2026-09-28",
+        "packages": 28,
+        "gross_weight_kg": 4520.0,
+        "net_weight_kg": 4180.0,
+        "sku_count": 4
+      },
+      "BILL_OF_LADING": {
+        "bl_no": "HDMU98765432",
+        "vessel_voyage": "SITC DALIAN / V.2608S",
+        "containers": ["TGHU1234567"],
+        "seals": ["SEAL-VN-9812"],
+        "gross_weight_kg": 4520.0
+      }
+    },
+    "skus": [
+      {
+        "sku": "SKU-IC-STM32",
+        "hs_code": "8542.31.00",
+        "description_vi": "Vi điều khiển 32-bit ARM Cortex-M4",
+        "quantity": 5000,
+        "unit_price": 4.25,
+        "total_amount": 21250.0,
+        "po_reference": "PO-2026-HANOI-01"
+      },
+      {
+        "sku": "SKU-CAP-10UF",
+        "hs_code": "8532.24.00",
+        "description_vi": "Tụ điện gốm nhiều lớp 10uF 50V",
+        "quantity": 20000,
+        "unit_price": 0.08,
+        "total_amount": 1600.0,
+        "po_reference": "PO-2026-HANOI-01"
+      },
+      {
+        "sku": "SKU-RES-10K",
+        "hs_code": "8533.21.00",
+        "description_vi": "Điện trở dán bề mặt SMD 10K Ohm",
+        "quantity": 50000,
+        "unit_price": 0.015,
+        "total_amount": 750.0,
+        "po_reference": "PO-2026-HANOI-02"
+      },
+      {
+        "sku": "SKU-DIODE-1N4148",
+        "hs_code": "8541.10.00",
+        "description_vi": "Đi-ốt đóng ngắt tín hiệu nhỏ SMD",
+        "quantity": 15000,
+        "unit_price": 0.028333,
+        "total_amount": 425.0,
+        "po_reference": "PO-2026-HANOI-02"
+      }
+    ]
+  },
+  "expected_validation_result": {
+    "is_valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "wms_gatekeeper_status": "READY_FOR_APPROVAL"
+  }
+}

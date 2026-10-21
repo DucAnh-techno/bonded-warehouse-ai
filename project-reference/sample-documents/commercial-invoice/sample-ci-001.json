@@ -1,0 +1,58 @@
+{
+  "document_type": "COMMERCIAL_INVOICE",
+  "document_number": "INV-SZ-2026-9041",
+  "issue_date": "2026-09-28",
+  "seller": "ShenZhen TechComponents Global Ltd.",
+  "buyer": "Công ty Cổ phần Công nghệ Cao Hà Nội",
+  "contract_reference": "HD-NT-2026-08",
+  "incoterms": "CIF HAI PHONG PORT",
+  "currency": "USD",
+  "total_invoice_value": 24025.0,
+  "payment_terms": "T/T 60 DAYS",
+  "items": [
+    {
+      "item_index": 1,
+      "sku": "SKU-IC-STM32",
+      "description_vi": "Vi điều khiển 32-bit ARM Cortex-M4",
+      "hs_code": "8542.31.00",
+      "quantity": 5000,
+      "uom": "PCS",
+      "unit_price": 4.25,
+      "total_amount": 21250.0,
+      "po_reference": "PO-2026-HANOI-01"
+    },
+    {
+      "item_index": 2,
+      "sku": "SKU-CAP-10UF",
+      "description_vi": "Tụ điện gốm nhiều lớp 10uF 50V",
+      "hs_code": "8532.24.00",
+      "quantity": 20000,
+      "uom": "PCS",
+      "unit_price": 0.08,
+      "total_amount": 1600.0,
+      "po_reference": "PO-2026-HANOI-01"
+    },
+    {
+      "item_index": 3,
+      "sku": "SKU-RES-10K",
+      "description_vi": "Điện trở dán bề mặt SMD 10K Ohm",
+      "hs_code": "8533.21.00",
+      "quantity": 50000,
+      "uom": "PCS",
+      "unit_price": 0.015,
+      "total_amount": 750.0,
+      "po_reference": "PO-2026-HANOI-02"
+    },
+    {
+      "item_index": 4,
+      "sku": "SKU-DIODE-1N4148",
+      "description_vi": "Đi-ốt đóng ngắt tín hiệu nhỏ SMD",
+      "hs_code": "8541.10.00",
+      "quantity": 15000,
+      "uom": "PCS",
+      "unit_price": 0.028333,
+      "total_amount": 425.0,
+      "po_reference": "PO-2026-HANOI-02"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+**/node_modules
+**/.venv
+**/__pycache__
+**/.pytest_cache
+**/.env
+**/*.db
+**/*.db-*
+frontend/dist
+.git
+data
+backend/storage
+project-reference
+backend/tests
+review-artifacts

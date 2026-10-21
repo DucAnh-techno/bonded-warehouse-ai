@@ -1,0 +1,33 @@
+{
+  "contract_type": "FOREIGN_TRADE_AND_WAREHOUSING",
+  "sales_contract_number": "HD-NT-2026-08",
+  "signing_date": "2026-08-15",
+  "buyer": {
+    "name": "Công ty Cổ phần Công nghệ Cao Hà Nội",
+    "tax_code": "0108992211",
+    "country": "VIETNAM"
+  },
+  "seller": {
+    "name": "ShenZhen TechComponents Global Ltd.",
+    "country": "CHINA"
+  },
+  "bonded_lease_contract": {
+    "lease_contract_number": "HĐTK-NQ-2026/041",
+    "warehouse_operator": "Công ty Cổ phần Logistics Đình Vũ Hải Phòng",
+    "warehouse_code": "02CIR01",
+    "retention_period_months": 12,
+    "max_extension_months": 12
+  },
+  "associated_purchase_orders": [
+    {
+      "po_number": "PO-2026-HANOI-01",
+      "authorized_skus": ["SKU-IC-STM32", "SKU-CAP-10UF"],
+      "po_value_usd": 22850.0
+    },
+    {
+      "po_number": "PO-2026-HANOI-02",
+      "authorized_skus": ["SKU-RES-10K", "SKU-DIODE-1N4148"],
+      "po_value_usd": 1175.0
+    }
+  ]
+}

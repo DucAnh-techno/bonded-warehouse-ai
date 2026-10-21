@@ -1,0 +1,506 @@
+﻿{
+    "shipment_id":  "a3f87a5f-0605-4e7b-8ccd-ee29e2e0daea",
+    "shipment_code":  "SHP-20261020-9972",
+    "status":  "VALIDATED",
+    "approval_status":  "PENDING",
+    "inbound_source":  "FOREIGN",
+    "requires_classification":  false,
+    "entry_date":  "2026-10-20",
+    "eta":  {
+                "value":  "2026-01-17",
+                "source_document_name":  "U\u0026I-NBCTPPHCM261724-ETA Jan 17, 2026.pdf",
+                "source_document_type":  "ARRIVAL_NOTICE",
+                "source_document_id":  "1186b189-57fb-48e2-845b-cda162141890"
+            },
+    "port_of_discharge":  {
+                              "value":  "CANG CONT SPITC",
+                              "source_document_name":  "ToKhaiHQ7N_107894526460.xls",
+                              "source_document_type":  "CUSTOMS_DECLARATION",
+                              "source_document_id":  "18f86fc3-e307-40ee-8fe5-d4272c510f14"
+                          },
+    "supplier_name":  {
+                          "value":  "TECHCENTIAL SDN BHD",
+                          "source_document_name":  "PO 336406 CI.pdf",
+                          "source_document_type":  "COMMERCIAL_INVOICE",
+                          "source_document_id":  "cfa5d699-2909-4c93-a20d-2e9a9b378b0e"
+                      },
+    "commodity_description":  {
+                                  "value":  "CARTONS OF FURNITURE-BEDROOM: WOOD",
+                                  "source_document_name":  "surrender NBCTPPHCM261724.pdf",
+                                  "source_document_type":  "BILL_OF_LADING",
+                                  "source_document_id":  "c2fd5472-8690-4a9d-b323-180b74a16993"
+                              },
+    "package_unit":  {
+                         "value":  "CARTONS",
+                         "source_document_name":  "surrender NBCTPPHCM261724.pdf",
+                         "source_document_type":  "BILL_OF_LADING",
+                         "source_document_id":  "c2fd5472-8690-4a9d-b323-180b74a16993"
+                     },
+    "measurement_cbm":  {
+                            "value":  "68.15 mÂ³",
+                            "source_document_name":  "surrender NBCTPPHCM261724.pdf",
+                            "source_document_type":  "BILL_OF_LADING",
+                            "source_document_id":  "c2fd5472-8690-4a9d-b323-180b74a16993"
+                        },
+    "contract_no":  {
+                        "value":  "29/UNIBWH-ELEMENTS/26",
+                        "source_document_name":  "29 UNIBWH-ELEMENTS 26.pdf",
+                        "source_document_type":  "WAREHOUSE_CONTRACT",
+                        "source_document_id":  "2465c20f-29e8-4a16-b109-9f6a3ca1e681"
+                    },
+    "tenant_name":  {
+                        "value":  "ELEMENTS INTERNATIONAL GROUP LLC",
+                        "source_document_name":  "29 UNIBWH-ELEMENTS 26.pdf",
+                        "source_document_type":  "WAREHOUSE_CONTRACT",
+                        "source_document_id":  "2465c20f-29e8-4a16-b109-9f6a3ca1e681"
+                    },
+    "lessor_name":  {
+                        "value":  "CÃNG TY Cá» PHáº¦N LOGISTICS U\u0026I",
+                        "source_document_name":  "29 UNIBWH-ELEMENTS 26.pdf",
+                        "source_document_type":  "WAREHOUSE_CONTRACT",
+                        "source_document_id":  "2465c20f-29e8-4a16-b109-9f6a3ca1e681"
+                    },
+    "valid_from":  {
+                       "value":  "2026-01-15",
+                       "source_document_name":  "29 UNIBWH-ELEMENTS 26.pdf",
+                       "source_document_type":  "WAREHOUSE_CONTRACT",
+                       "source_document_id":  "2465c20f-29e8-4a16-b109-9f6a3ca1e681"
+                   },
+    "valid_until":  null,
+    "customs_declaration_no":  {
+                                   "value":  "107894526460",
+                                   "source_document_name":  "ToKhaiHQ7N_107894526460.xls",
+                                   "source_document_type":  "CUSTOMS_DECLARATION",
+                                   "source_document_id":  "18f86fc3-e307-40ee-8fe5-d4272c510f14"
+                               },
+    "declaration_type":  {
+                             "value":  "C11",
+                             "source_document_name":  "LÃ´ hÃ ng kho ngoáº¡i quan",
+                             "source_document_type":  "CUSTOMS_DECLARATION",
+                             "source_document_id":  null
+                         },
+    "declaration_date":  {
+                             "value":  "2026-01-15",
+                             "source_document_name":  "ToKhaiHQ7N_107894526460.xls",
+                             "source_document_type":  "CUSTOMS_DECLARATION",
+                             "source_document_id":  "18f86fc3-e307-40ee-8fe5-d4272c510f14"
+                         },
+    "bill_of_lading_no":  {
+                              "value":  "NBCTPPHCM261724",
+                              "source_document_name":  "surrender NBCTPPHCM261724.pdf",
+                              "source_document_type":  "BILL_OF_LADING",
+                              "source_document_id":  "c2fd5472-8690-4a9d-b323-180b74a16993"
+                          },
+    "commercial_invoice_no":  {
+                                  "value":  "T260006",
+                                  "source_document_name":  "PO 336406 CI.pdf",
+                                  "source_document_type":  "COMMERCIAL_INVOICE",
+                                  "source_document_id":  "cfa5d699-2909-4c93-a20d-2e9a9b378b0e"
+                              },
+    "invoice_date":  {
+                         "value":  "2026-01-02",
+                         "source_document_name":  "PO 336406 CI.pdf",
+                         "source_document_type":  "COMMERCIAL_INVOICE",
+                         "source_document_id":  "cfa5d699-2909-4c93-a20d-2e9a9b378b0e"
+                     },
+    "packing_list_no":  null,
+    "po_numbers":  [
+                       "336406",
+                       "T260006"
+                   ],
+    "shipper":  {
+                    "value":  "TECHCENTIAL SDN. BHD.",
+                    "source_document_name":  "surrender NBCTPPHCM261724.pdf",
+                    "source_document_type":  "BILL_OF_LADING",
+                    "source_document_id":  "c2fd5472-8690-4a9d-b323-180b74a16993"
+                },
+    "consignee":  {
+                      "value":  "U\u0026I LOGISTICS CORPORATION",
+                      "source_document_name":  "surrender NBCTPPHCM261724.pdf",
+                      "source_document_type":  "BILL_OF_LADING",
+                      "source_document_id":  "c2fd5472-8690-4a9d-b323-180b74a16993"
+                  },
+    "warehouse_name":  {
+                           "value":  "Kho CÃ´ng ty",
+                           "source_document_name":  "ToKhaiHQ7N_107894526460.xls",
+                           "source_document_type":  "CUSTOMS_DECLARATION",
+                           "source_document_id":  "18f86fc3-e307-40ee-8fe5-d4272c510f14"
+                       },
+    "vessel_voyage":  {
+                          "value":  "EVER CANDID V.0515-079N",
+                          "source_document_name":  "surrender NBCTPPHCM261724.pdf",
+                          "source_document_type":  "BILL_OF_LADING",
+                          "source_document_id":  "c2fd5472-8690-4a9d-b323-180b74a16993"
+                      },
+    "container_numbers":  [
+                              "TXGU7251747"
+                          ],
+    "seal_numbers":  [
+                         "EMCQPS9244",
+                         "TXGU7251747"
+                     ],
+    "total_packages":  {
+                           "value":  "222",
+                           "source_document_name":  "surrender NBCTPPHCM261724.pdf",
+                           "source_document_type":  "BILL_OF_LADING",
+                           "source_document_id":  "c2fd5472-8690-4a9d-b323-180b74a16993"
+                       },
+    "total_gross_weight_kg":  {
+                                  "value":  "7,515.1 kg",
+                                  "source_document_name":  "surrender NBCTPPHCM261724.pdf",
+                                  "source_document_type":  "BILL_OF_LADING",
+                                  "source_document_id":  "c2fd5472-8690-4a9d-b323-180b74a16993"
+                              },
+    "total_net_weight_kg":  {
+                                "value":  "6,297.9 kg",
+                                "source_document_name":  "INV \u0026 PKL PO 336406.pdf",
+                                "source_document_type":  "PACKING_LIST",
+                                "source_document_id":  "0760df65-f159-48ae-9f20-70b1dced5e4b"
+                            },
+    "total_invoice_value":  {
+                                "value":  "11,883 USD",
+                                "source_document_name":  "PO 336406 CI.pdf",
+                                "source_document_type":  "COMMERCIAL_INVOICE",
+                                "source_document_id":  "cfa5d699-2909-4c93-a20d-2e9a9b378b0e"
+                            },
+    "currency":  {
+                     "value":  "USD",
+                     "source_document_name":  "PO 336406 CI.pdf",
+                     "source_document_type":  "COMMERCIAL_INVOICE",
+                     "source_document_id":  "cfa5d699-2909-4c93-a20d-2e9a9b378b0e"
+                 },
+    "incoterms":  {
+                      "value":  "FOB",
+                      "source_document_name":  "ToKhaiHQ7N_107894526460.xls",
+                      "source_document_type":  "CUSTOMS_DECLARATION",
+                      "source_document_id":  "18f86fc3-e307-40ee-8fe5-d4272c510f14"
+                  },
+    "document_values":  {
+                            "gross_weight":  {
+                                                 "surrender NBCTPPHCM261724.pdf":  7515.1,
+                                                 "U\u0026I-NBCTPPHCM261724-ETA Jan 17, 2026.pdf":  7515.1,
+                                                 "INV \u0026 PKL PO 336406.pdf":  7515.1,
+                                                 "ToKhaiHQ7N_107894526460.xls":  7515.1
+                                             },
+                            "packages":  {
+                                             "surrender NBCTPPHCM261724.pdf":  222,
+                                             "U\u0026I-NBCTPPHCM261724-ETA Jan 17, 2026.pdf":  222,
+                                             "PO 336406 CI.pdf":  222,
+                                             "INV \u0026 PKL PO 336406.pdf":  222,
+                                             "ToKhaiHQ7N_107894526460.xls":  222,
+                                             "PO 336406 SC.pdf":  222
+                                         },
+                            "package_unit":  {
+                                                 "surrender NBCTPPHCM261724.pdf":  "CARTONS",
+                                                 "U\u0026I-NBCTPPHCM261724-ETA Jan 17, 2026.pdf":  "CARTONS",
+                                                 "PO 336406 CI.pdf":  "CT",
+                                                 "INV \u0026 PKL PO 336406.pdf":  "CTNS",
+                                                 "PO 336406 SC.pdf":  "PCS"
+                                             },
+                            "cbm":  {
+                                        "surrender NBCTPPHCM261724.pdf":  68.154,
+                                        "U\u0026I-NBCTPPHCM261724-ETA Jan 17, 2026.pdf":  68.154,
+                                        "INV \u0026 PKL PO 336406.pdf":  68.154
+                                    },
+                            "containers":  {
+                                               "surrender NBCTPPHCM261724.pdf":  [
+                                                                                     "TXGU7251747"
+                                                                                 ],
+                                               "U\u0026I-NBCTPPHCM261724-ETA Jan 17, 2026.pdf":  [
+                                                                                                     "TXGU7251747"
+                                                                                                 ],
+                                               "INV \u0026 PKL PO 336406.pdf":  [
+                                                                                    "TXGU7251747"
+                                                                                ]
+                                           },
+                            "seals":  {
+                                          "surrender NBCTPPHCM261724.pdf":  [
+                                                                                "EMCQPS9244"
+                                                                            ],
+                                          "U\u0026I-NBCTPPHCM261724-ETA Jan 17, 2026.pdf":  [
+                                                                                                "EMCQPS9244"
+                                                                                            ],
+                                          "PO 336406 CI.pdf":  [
+                                                                   "TXGU7251747",
+                                                                   "EMCQPS9244"
+                                                               ],
+                                          "INV \u0026 PKL PO 336406.pdf":  [
+                                                                               "EMCQPS9244"
+                                                                           ]
+                                      },
+                            "owner":  {
+                                          "surrender NBCTPPHCM261724.pdf":  "U\u0026I LOGISTICS CORPORATION",
+                                          "U\u0026I-NBCTPPHCM261724-ETA Jan 17, 2026.pdf":  "U\u0026I LOGISTICS CORPORATION NO. 158 NGO GIA TU STREET, THU DAU MOT WARD, HO CHI MINH CITY, VIETNAM C/O U\u0026I BONDED WAREHOUSE N13 STREET, NAM TAN UYEN IP, TAN HIEP WARD, HO CHI MINH CITY, VIETNAM",
+                                          "PO 336406 CI.pdf":  "ELEMENTS INTERNATIONAL GROUP, LLC",
+                                          "INV \u0026 PKL PO 336406.pdf":  "ELEMENTS INTERNATIONAL GROUP, LLC",
+                                          "ToKhaiHQ7N_107894526460.xls":  "CÃ´ng Ty Cá» Pháº§n Logistics U\u0026I",
+                                          "PO 336406 SC.pdf":  "U\u0026I LOGISTICS CORPORATION"
+                                      },
+                            "supplier":  {
+                                             "PO 336406 CI.pdf":  "TECHCENTIAL SDN BHD",
+                                             "INV \u0026 PKL PO 336406.pdf":  "TECHCENTIAL SDN BHD",
+                                             "ToKhaiHQ7N_107894526460.xls":  "TECHCENTIAL SDN BHD",
+                                             "29 UNIBWH-ELEMENTS 26.pdf":  "ELEMENTS INTERNATIONAL GROUP LLC",
+                                             "PO 336406 SC.pdf":  "ELEMENTS INTERNATIONAL GROUP LLC"
+                                         },
+                            "vessel_voyage":  {
+                                                  "surrender NBCTPPHCM261724.pdf":  "EVER CANDID V.0515-079N",
+                                                  "U\u0026I-NBCTPPHCM261724-ETA Jan 17, 2026.pdf":  "EVER CANDID / 0515-079N",
+                                                  "PO 336406 CI.pdf":  "EVER CANDID V.0515-079N",
+                                                  "INV \u0026 PKL PO 336406.pdf":  "EVER CANDID V.0515-079N",
+                                                  "ToKhaiHQ7N_107894526460.xls":  "EVER CANDID 0515-079N"
+                                              },
+                            "declaration_no":  {
+                                                   "ToKhaiHQ7N_107894526460.xls":  "107894526460"
+                                               },
+                            "eta":  {
+                                        "U\u0026I-NBCTPPHCM261724-ETA Jan 17, 2026.pdf":  "2026-01-17",
+                                        "PO 336406 CI.pdf":  "2026-01-16",
+                                        "INV \u0026 PKL PO 336406.pdf":  "2026-01-16",
+                                        "ToKhaiHQ7N_107894526460.xls":  "2026-01-17"
+                                    },
+                            "contract":  {
+                                             "29 UNIBWH-ELEMENTS 26.pdf":  {
+                                                                               "document_number":  "29/UNIBWH-ELEMENTS/26",
+                                                                               "tenant_name":  "ELEMENTS INTERNATIONAL GROUP LLC",
+                                                                               "lessor_name":  "CÃNG TY Cá» PHáº¦N LOGISTICS U\u0026I",
+                                                                               "valid_from":  "2026-01-15",
+                                                                               "valid_until":  null
+                                                                           }
+                                         }
+                        },
+    "field_matrix":  [
+                         {
+                             "field_key":  "cargo_owner",
+                             "label_vi":  "Chá»§ hÃ ng",
+                             "applicable_docs":  [
+                                                     "SC",
+                                                     "INV",
+                                                     "PL",
+                                                     "TK",
+                                                     "HD"
+                                                 ],
+                             "values_by_doc":  {
+                                                   "SC":  "ELEMENTS INTERNATIONAL GROUP LLC",
+                                                   "INV":  "ELEMENTS INTERNATIONAL GROUP, LLC",
+                                                   "PL":  "ELEMENTS INTERNATIONAL GROUP, LLC",
+                                                   "TK":  "ELEMENTS INTERNATIONAL GROUP, LLC",
+                                                   "HD":  "ELEMENTS INTERNATIONAL GROUP LLC"
+                                               },
+                             "status":  "MATCHED",
+                             "note_vi":  "CÃ³ SC: INV do Seller \u0026 Buyer (trÃªn SC) kÃ½; Seller(SC)=XK(TK), Buyer(SC)=Chá»§ hÃ ng(INV/PL/HÄ)"
+                         },
+                         {
+                             "field_key":  "consignee",
+                             "label_vi":  "NgÆ°á»i nháº­n",
+                             "applicable_docs":  [
+                                                     "BL",
+                                                     "AN",
+                                                     "SC",
+                                                     "INV",
+                                                     "TK",
+                                                     "HD"
+                                                 ],
+                             "values_by_doc":  {
+                                                   "BL":  "U\u0026I LOGISTICS CORPORATION",
+                                                   "AN":  "U\u0026I LOGISTICS CORPORATION NO. 158 NGO GIA TU STREET, THU DAU MOT WARD, HO CHI MINH CITY, VIETNAM C/O U\u0026I BONDED WAREHOUSE N13 STREET, NAM TAN UYEN IP, TAN HIEP WARD, HO CHI MINH CITY, VIETNAM",
+                                                   "SC":  "U\u0026I LOGISTICS CORPORATION",
+                                                   "INV":  "ELEMENTS INTERNATIONAL GROUP, LLC",
+                                                   "TK":  "CÃ´ng Ty Cá» Pháº§n Logistics U\u0026I",
+                                                   "HD":  "CÃNG TY Cá» PHáº¦N LOGISTICS U\u0026I"
+                                               },
+                             "status":  "MATCHED",
+                             "note_vi":  "Consignee táº¡i Ã´ Consignee trÃªn BL/AN/SC/TK lÃ  U\u0026I; INV kÃ½ giá»¯a Seller \u0026 Buyer (trÃªn SC)"
+                         },
+                         {
+                             "field_key":  "port_of_discharge",
+                             "label_vi":  "Cáº£ng dá»¡",
+                             "applicable_docs":  [
+                                                     "TK"
+                                                 ],
+                             "values_by_doc":  {
+                                                   "TK":  "CANG CONT SPITC"
+                                               },
+                             "status":  "MATCHED",
+                             "note_vi":  "Chá» láº¥y dá»¯ liá»u tá»« Tá» khai HQ (khÃ´ng Äá»i soÃ¡t)"
+                         },
+                         {
+                             "field_key":  "eta",
+                             "label_vi":  "Thá»i gian hÃ ng Äáº¿n",
+                             "applicable_docs":  [
+                                                     "AN",
+                                                     "TK"
+                                                 ],
+                             "values_by_doc":  {
+                                                   "AN":  "2026-01-17",
+                                                   "TK":  "2026-01-17"
+                                               },
+                             "status":  "MATCHED",
+                             "note_vi":  null
+                         },
+                         {
+                             "field_key":  "containers",
+                             "label_vi":  "Sá» container",
+                             "applicable_docs":  [
+                                                     "BL",
+                                                     "AN",
+                                                     "PL"
+                                                 ],
+                             "values_by_doc":  {
+                                                   "BL":  "TXGU7251747",
+                                                   "AN":  "TXGU7251747",
+                                                   "PL":  "TXGU7251747"
+                                               },
+                             "status":  "MATCHED",
+                             "note_vi":  null
+                         },
+                         {
+                             "field_key":  "seals",
+                             "label_vi":  "Sá» seal",
+                             "applicable_docs":  [
+                                                     "BL",
+                                                     "AN",
+                                                     "PL"
+                                                 ],
+                             "values_by_doc":  {
+                                                   "BL":  "EMCQPS9244",
+                                                   "AN":  "EMCQPS9244",
+                                                   "PL":  "EMCQPS9244"
+                                               },
+                             "status":  "MATCHED",
+                             "note_vi":  null
+                         },
+                         {
+                             "field_key":  "commodity",
+                             "label_vi":  "TÃªn hÃ ng",
+                             "applicable_docs":  [
+                                                     "BL",
+                                                     "AN",
+                                                     "SC",
+                                                     "INV",
+                                                     "PL",
+                                                     "TK",
+                                                     "HD"
+                                                 ],
+                             "values_by_doc":  {
+                                                   "BL":  "CARTONS OF FURNITURE-BEDROOM: WOOD",
+                                                   "AN":  "DETAILS AS PER BILL OF LADING",
+                                                   "SC":  "11 dÃ²ng SKU (ALLAN QUEEN HEADBOARD IN BLACK)",
+                                                   "INV":  "11 dÃ²ng SKU (ALLAN QUEEN HEADBOARD IN BLACK)",
+                                                   "PL":  "11 dÃ²ng SKU (ALLAN QUEEN HEADBOARD IN BLACK)",
+                                                   "TK":  "11 dÃ²ng SKU (Äáº§u giÆ°á»ng báº±ng gá» cao su, MDF(2.75 X 70 X 41...)",
+                                                   "HD":  "Äá» gá» ná»i tháº¥t: sáº£n pháº©m gá» ÄÆ°á»£c lÃ m tá»« gá» sá»i, gá» cherry, gá» cao su, gá» Ã³c chÃ³, gá» ngÃ´ Äá»ng, gá» xoan ÄÃ o, gá» sáº¿n, gá» thÃ´ng, gá» báº¡ch dÆ°Æ¡ng, MDF, vÃ¡n okal, ngÅ© kim, kÃ­nh, gÆ°Æ¡ng, veneer, da, simili, PVC, ÄÃ¡ granite ÄÃ£ ÄÃ¡nh bÃ³ng 1 máº·t"
+                                               },
+                             "status":  "MATCHED",
+                             "note_vi":  "Äá»i soÃ¡t chi tiáº¿t tá»«ng dÃ²ng SKU giá»¯a INV - PL - Tá» khai (- SC) táº¡i báº£ng SKU bÃªn dÆ°á»i"
+                         },
+                         {
+                             "field_key":  "packages",
+                             "label_vi":  "Sá» kiá»n",
+                             "applicable_docs":  [
+                                                     "BL",
+                                                     "AN",
+                                                     "SC",
+                                                     "INV",
+                                                     "PL",
+                                                     "TK"
+                                                 ],
+                             "values_by_doc":  {
+                                                   "BL":  "222 CARTONS",
+                                                   "AN":  "222 CARTONS",
+                                                   "SC":  "222 PCS",
+                                                   "INV":  "222 CT",
+                                                   "PL":  "222 CTNS",
+                                                   "TK":  "222"
+                                               },
+                             "status":  "MATCHED",
+                             "note_vi":  null
+                         },
+                         {
+                             "field_key":  "gross_weight",
+                             "label_vi":  "Gross weight",
+                             "applicable_docs":  [
+                                                     "BL",
+                                                     "AN",
+                                                     "PL",
+                                                     "TK"
+                                                 ],
+                             "values_by_doc":  {
+                                                   "BL":  "7,515.1 kg",
+                                                   "AN":  "7,515.1 kg",
+                                                   "PL":  "7,515.1 kg",
+                                                   "TK":  "7,515.1 kg"
+                                               },
+                             "status":  "MATCHED",
+                             "note_vi":  null
+                         },
+                         {
+                             "field_key":  "cbm",
+                             "label_vi":  "Thá» tÃ­ch",
+                             "applicable_docs":  [
+                                                     "BL",
+                                                     "AN",
+                                                     "PL"
+                                                 ],
+                             "values_by_doc":  {
+                                                   "BL":  "68.15 CBM",
+                                                   "AN":  "68.15 CBM",
+                                                   "PL":  "68.15 CBM"
+                                               },
+                             "status":  "MATCHED",
+                             "note_vi":  null
+                         },
+                         {
+                             "field_key":  "total_value",
+                             "label_vi":  "GiÃ¡ trá»",
+                             "applicable_docs":  [
+                                                     "SC",
+                                                     "INV",
+                                                     "TK"
+                                                 ],
+                             "values_by_doc":  {
+                                                   "SC":  "11,883 USD",
+                                                   "INV":  "11,883 USD",
+                                                   "TK":  "11,883 USD"
+                                               },
+                             "status":  "MATCHED",
+                             "note_vi":  "Sai sá» cho phÃ©p Â±0.5"
+                         },
+                         {
+                             "field_key":  "invoice_no",
+                             "label_vi":  "Sá» Invoice",
+                             "applicable_docs":  [
+                                                     "SC",
+                                                     "INV",
+                                                     "PL",
+                                                     "TK"
+                                                 ],
+                             "values_by_doc":  {
+                                                   "INV":  "T260006",
+                                                   "PL":  "T260006",
+                                                   "TK":  "A - T260006"
+                                               },
+                             "status":  "MATCHED",
+                             "note_vi":  "Cho phÃ©p khÃ¡c biá»t tiá»n tá» náº¿u cÃ¹ng sá» hiá»u"
+                         },
+                         {
+                             "field_key":  "po_numbers",
+                             "label_vi":  "Sá» PO",
+                             "applicable_docs":  [
+                                                     "BL",
+                                                     "SC",
+                                                     "INV",
+                                                     "PL"
+                                                 ],
+                             "values_by_doc":  {
+                                                   "BL":  "336406",
+                                                   "SC":  "336406",
+                                                   "INV":  "336406",
+                                                   "PL":  "336406"
+                                               },
+                             "status":  "MATCHED",
+                             "note_vi":  null
+                         }
+                     ],
+    "has_sale_contract":  true
+}
