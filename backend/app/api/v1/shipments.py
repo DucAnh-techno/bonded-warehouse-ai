@@ -542,4 +542,179 @@ def get_consolidated_header(shipment_id: str, db: Session = Depends(get_db)):
         has_sale_contract=has_sc,
     )
 
+@router.post("/sync/import-local-data")
+def import_local_data(payload: dict, db: Session = Depends(get_db)):
+    """Import local database records and uploaded files onto remote server."""
+    import base64
+    from pathlib import Path
+    from app.core.config import settings
+    from app.models.shipment import Shipment
+    from app.models.document import Document
+    from app.models.document_extraction import DocumentExtraction
+    from app.models.extraction import ExtractedLineItem
+    from app.models.validation import Discrepancy, ValidationRuleSetting
+    from app.models.audit import AuditLog
+    from datetime import datetime, date
+
+    files_dict = payload.get("files", {})
+    # Save files to uploads directory
+    target_dir = settings.UPLOAD_DIR
+    target_dir.mkdir(parents=True, exist_ok=True)
+    for fn, b64_content in files_dict.items():
+        try:
+            file_bytes = base64.b64decode(b64_content)
+            target_file = target_dir / fn
+            with open(target_file, "wb") as f:
+                f.write(file_bytes)
+        except Exception:
+            pass
+
+    # Helper date parser
+    def parse_dt(v):
+        if not v:
+            return None
+        try:
+            return datetime.fromisoformat(v)
+        except Exception:
+            return None
+
+    def parse_d(v):
+        if not v:
+            return None
+        try:
+            return date.fromisoformat(v)
+        except Exception:
+            return None
+
+    # Clear old data to avoid duplicate PK errors
+    db.query(ExtractedLineItem).delete()
+    db.query(DocumentExtraction).delete()
+    db.query(Discrepancy).delete()
+    db.query(AuditLog).delete()
+    db.query(Document).delete()
+    db.query(Shipment).delete()
+    db.flush()
+
+    # Import shipments
+    for s_data in payload.get("shipments", []):
+        s = Shipment(
+            id=s_data["id"],
+            shipment_code=s_data["shipment_code"],
+            customs_declaration_no=s_data.get("customs_declaration_no"),
+            declaration_type=s_data.get("declaration_type"),
+            warehouse_type=s_data.get("warehouse_type", "BONDED"),
+            bonded_warehouse_name=s_data.get("bonded_warehouse_name"),
+            partner_name=s_data.get("partner_name"),
+            direction=s_data.get("direction", "INBOUND"),
+            inbound_source=s_data.get("inbound_source"),
+            status=s_data.get("status", "DRAFT"),
+            approval_status=s_data.get("approval_status", "PENDING"),
+            approved_by=s_data.get("approved_by"),
+            approved_at=parse_dt(s_data.get("approved_at")),
+            entry_date=parse_d(s_data.get("entry_date")),
+            notes=s_data.get("notes"),
+            created_at=parse_dt(s_data.get("created_at")) or datetime.utcnow(),
+            updated_at=parse_dt(s_data.get("updated_at")) or datetime.utcnow()
+        )
+        db.add(s)
+    db.flush()
+
+    # Import documents
+    for d_data in payload.get("documents", []):
+        fn = Path(d_data["storage_path"]).name
+        actual_path = str((target_dir / fn).resolve()).replace("\\", "/")
+        d = Document(
+            id=d_data["id"],
+            shipment_id=d_data["shipment_id"],
+            original_filename=d_data["original_filename"],
+            storage_path=actual_path,
+            mime_type=d_data["mime_type"],
+            sha256_hash=d_data["sha256_hash"],
+            file_size_bytes=d_data["file_size_bytes"],
+            page_count=d_data.get("page_count"),
+            document_type=d_data.get("document_type"),
+            parsed_content_json=d_data.get("parsed_content_json"),
+            version=d_data.get("version", 1),
+            uploaded_at=parse_dt(d_data.get("uploaded_at")) or datetime.utcnow()
+        )
+        db.add(d)
+    db.flush()
+
+    # Import document_extractions
+    for e_data in payload.get("document_extractions", []):
+        e = DocumentExtraction(
+            id=e_data["id"],
+            document_id=e_data["document_id"],
+            status=e_data.get("status", "SUCCESS"),
+            model_name=e_data.get("model_name"),
+            raw_response_json=e_data.get("raw_response_json"),
+            confidence_score=e_data.get("confidence_score"),
+            error_message=e_data.get("error_message"),
+            extracted_header_json=e_data.get("extracted_header_json"),
+            extracted_at=parse_dt(e_data.get("extracted_at")) or datetime.utcnow(),
+            version=e_data.get("version", 1),
+            prompt_tokens=e_data.get("prompt_tokens"),
+            candidate_tokens=e_data.get("candidate_tokens")
+        )
+        db.add(e)
+    db.flush()
+
+    # Import extracted_line_items
+    for it_data in payload.get("extracted_line_items", []):
+        it = ExtractedLineItem(
+            id=it_data["id"],
+            extraction_id=it_data["extraction_id"],
+            item_index=it_data.get("item_index", 1),
+            sku=it_data.get("sku"),
+            part_number=it_data.get("part_number"),
+            description_vi=it_data.get("description_vi"),
+            hs_code=it_data.get("hs_code"),
+            quantity=it_data.get("quantity"),
+            uom=it_data.get("uom"),
+            unit_price=it_data.get("unit_price"),
+            total_amount=it_data.get("total_amount"),
+            currency=it_data.get("currency"),
+            gross_weight_kg=it_data.get("gross_weight_kg"),
+            net_weight_kg=it_data.get("net_weight_kg"),
+            po_reference=it_data.get("po_reference"),
+            page_number=it_data.get("page_number"),
+            raw_line_text=it_data.get("raw_line_text"),
+            bounding_box_json=it_data.get("bounding_box_json")
+        )
+        db.add(it)
+    db.flush()
+
+    # Import discrepancies
+    for disc_data in payload.get("discrepancies", []):
+        disc = Discrepancy(
+            id=disc_data["id"],
+            shipment_id=disc_data["shipment_id"],
+            rule_code=disc_data["rule_code"],
+            severity=disc_data["severity"],
+            field_name=disc_data["field_name"],
+            description_vi=disc_data["description_vi"],
+            category=disc_data.get("category", "CONFLICT"),
+            source_doc_a_id=disc_data.get("source_doc_a_id"),
+            source_doc_a_name=disc_data.get("source_doc_a_name"),
+            value_a=disc_data.get("value_a"),
+            source_doc_b_id=disc_data.get("source_doc_b_id"),
+            source_doc_b_name=disc_data.get("source_doc_b_name"),
+            value_b=disc_data.get("value_b"),
+            status=disc_data.get("status", "OPEN"),
+            resolution_action=disc_data.get("resolution_action"),
+            resolution_reason=disc_data.get("resolution_reason"),
+            resolved_by=disc_data.get("resolved_by"),
+            resolved_at=parse_dt(disc_data.get("resolved_at")),
+            created_at=parse_dt(disc_data.get("created_at")) or datetime.utcnow(),
+            updated_at=parse_dt(disc_data.get("updated_at")) or datetime.utcnow()
+        )
+        db.add(disc)
+
+    db.commit()
+    return {
+        "success": True,
+        "imported_shipments": len(payload.get("shipments", [])),
+        "imported_documents": len(payload.get("documents", [])),
+        "imported_files": len(files_dict)
+    }
 
