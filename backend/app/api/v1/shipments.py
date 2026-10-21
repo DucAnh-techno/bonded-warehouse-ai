@@ -550,8 +550,7 @@ def import_local_data(payload: dict, db: Session = Depends(get_db)):
     from app.core.config import settings
     from app.models.shipment import Shipment
     from app.models.document import Document
-    from app.models.document_extraction import DocumentExtraction
-    from app.models.extraction import ExtractedLineItem
+    from app.models.extraction import DocumentExtraction, ExtractedLineItem
     from app.models.validation import Discrepancy, ValidationRuleSetting
     from app.models.audit import AuditLog
     from datetime import datetime, date
