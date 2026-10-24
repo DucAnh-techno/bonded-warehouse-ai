@@ -79,7 +79,7 @@ TARGETED_DOC_INSTRUCTIONS = {
         "consignee_importer (Người nhận / Consignee / To), container_numbers (Số container), seal_numbers (Số seal), "
         "commodity_description (Tên hàng chung), total_packages & package_unit (Số kiện), "
         "total_gross_weight_kg (Gross weight), total_net_weight_kg, measurement_cbm (Thể tích CBM), "
-        "invoice_number_ref (Số Invoice tham chiếu trên PL), po_numbers (Số PO. Lưu ý: Chỉ trích xuất chính xác mã số PO như '336406', tuyệt đối KHÔNG ghép các số quản lý nội bộ/ngày tháng như '20251126031' vào trường này), và danh sách chi tiết SKU items (sku, description_vi, quantity, uom, po_reference)."
+        "invoice_number_ref (Số Invoice tham chiếu trên PL), po_numbers (Số PO. Lưu ý: Chỉ trích xuất chính xác mã số PO như '336406', tuyệt đối KHÔNG ghép các số quản lý nội bộ/ngày tháng như '20251126031' vào trường này), và danh sách chi tiết SKU items (sku, description_vi, quantity, uom [ưu tiên lấy đơn vị tính số lượng hàng hóa như PCS/SETS nếu có cả cột PCS và CTNS], po_reference)."
     ),
     "CUSTOMS_DECLARATION": (
         "Chứng từ Tờ khai hải quan (Tờ khai). Trích xuất: "

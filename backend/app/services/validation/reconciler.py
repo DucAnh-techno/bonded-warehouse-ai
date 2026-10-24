@@ -103,7 +103,8 @@ class CrossDocumentReconciliationEngine:
                 if item.description_vi and (sku_map[sku_key]["description_vi"] == sku_key or not sku_map[sku_key]["description_vi"]):
                     sku_map[sku_key]["description_vi"] = item.description_vi
                 if item.uom:
-                    sku_map[sku_key]["uom"] = item.uom
+                    if doc_type == "COMMERCIAL_INVOICE" or not sku_map[sku_key].get("uom") or sku_map[sku_key]["uom"] == "Cái":
+                        sku_map[sku_key]["uom"] = item.uom
 
                 sku_map[sku_key]["line_items"].append((doc, item))
 
@@ -431,6 +432,24 @@ class CrossDocumentReconciliationEngine:
                         res_hsm.severity = rule_hs_match.severity
                         rule_results.append(res_hsm)
 
+        def _norm_item_uom(u: str) -> str:
+            s = u.strip().upper()
+            if s in ("PC", "PCS", "PCE", "PIECE", "PIECES", "CAI", "CÁI", "CHIẾC", "CHIEC", "UNIT", "UNITS", "EA", "EACH"):
+                return "PIECE"
+            if s in ("CT", "CTN", "CTNS", "CARTON", "CARTONS", "THUNG", "THÙNG"):
+                return "CARTON"
+            if s in ("PL", "PLT", "PLTS", "PALLET", "PALLETS"):
+                return "PALLET"
+            if s in ("PKG", "PKGS", "PACKAGE", "PACKAGES", "KIEN", "KIỆN"):
+                return "PACKAGE"
+            if s in ("SET", "SETS", "BO", "BỘ"):
+                return "SET"
+            if s in ("BOX", "BOXES", "HOP", "HỘP"):
+                return "BOX"
+            if s in ("KG", "KGS", "KGM", "KILOGRAM", "KILOGRAMS"):
+                return "KG"
+            return s
+
         # 4. VAL-QTY-001: Cross-document SKU Quantity Triangulation (Invoice vs Packing List)
         for sku_key, data in sku_map.items():
             q_pl = data["quantities"].get("PACKING_LIST")
@@ -442,9 +461,12 @@ class CrossDocumentReconciliationEngine:
                 missing(f"sku[{sku_key}].quantity", f"Dòng hàng ({sku_key}) có trên Invoice nhưng thiếu trên Packing List.")
             elif q_ci is None and q_pl is not None:
                 missing(f"sku[{sku_key}].quantity", f"Dòng hàng ({sku_key}) có trên Packing List nhưng thiếu trên Invoice.")
-            units = {item.uom.strip().upper() for _, item in data["line_items"] if item.uom}
-            if len(units) > 1:
-                missing(f"sku[{sku_key}].quantity", "Đơn vị tính không khớp; không tự quy đổi.")
+            raw_units = {item.uom.strip().upper() for _, item in data["line_items"] if item.uom}
+            norm_units = {_norm_item_uom(u) for u in raw_units}
+            # Nếu SL trên CI và PL khớp nhau hoàn toàn và một bên ghi PIECE (PCS), bên kia ghi CARTON (CTNS) (1 kiện = 1 sản phẩm) thì cho phép khớp
+            qty_matched = (q_pl is not None and q_ci is not None and abs(q_pl - q_ci) <= 0.001)
+            if len(norm_units) > 1 and not (qty_matched and norm_units == {"PIECE", "CARTON"}):
+                missing(f"sku[{sku_key}].quantity", f"Đơn vị tính không khớp ({', '.join(sorted(raw_units))}); không tự quy đổi.")
             if res_qty:
                 res_qty.severity = "ERROR"
                 rule_results.append(res_qty)
@@ -600,7 +622,7 @@ class CrossDocumentReconciliationEngine:
                 "po_reference": data["po_reference"],
                 "description_vi": data["description_vi"],
                 "hs_code_declaration": data["hs_codes"].get("CUSTOMS_DECLARATION"),
-                "hs_code_invoice": data["hs_codes"].get("COMMERCIAL_INVOICE"),
+                "hs_code_invoice": data["hs_codes"].get("COMMERCIAL_INVOICE") or data["hs_codes"].get("CUSTOMS_DECLARATION"),
                 "qty_declaration": q_dec,
                 "qty_invoice": q_ci,
                 "qty_packing_list": q_pl,

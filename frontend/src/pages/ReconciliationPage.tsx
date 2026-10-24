@@ -1155,10 +1155,19 @@ export const ReconciliationPage: React.FC<ReconciliationPageProps> = ({
                                     Khớp
                                   </span>
                                 ) : (
-                                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-rose-100 text-rose-800 border border-rose-200" title={item.discrepancies?.join('\n') || ''}>
-                                    <AlertTriangle className="w-3 h-3 mr-1 text-rose-600" />
-                                    Lệch ({item.discrepancies?.length ?? 0})
-                                  </span>
+                                  <div className="flex flex-col items-center gap-1">
+                                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-rose-100 text-rose-800 border border-rose-200" title={item.discrepancies?.join('\n') || ''}>
+                                      <AlertTriangle className="w-3 h-3 mr-1 text-rose-600" />
+                                      Lệch ({item.discrepancies?.length ?? 0})
+                                    </span>
+                                    {item.discrepancies && item.discrepancies.length > 0 && (
+                                      <div className="text-[10px] text-rose-700 font-medium leading-tight max-w-[220px]">
+                                        {item.discrepancies.map((msg, mIdx) => (
+                                          <div key={mIdx}>{msg}</div>
+                                        ))}
+                                      </div>
+                                    )}
+                                  </div>
                                 )}
                               </td>
                             </tr>
