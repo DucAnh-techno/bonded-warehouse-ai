@@ -4,12 +4,22 @@ from sqlalchemy.orm import sessionmaker, Session
 from app.core.config import settings
 
 # Engine setup: support both SQLite (with WAL) and PostgreSQL (for Cloud hosting like Supabase/Neon)
-is_sqlite = settings.DATABASE_URL.startswith("sqlite")
+db_url = settings.DATABASE_URL.strip()
+
+# Normalize Postgres driver scheme:
+# - Render/Supabase often provides 'postgres://' or 'postgresql://'
+# - SQLAlchemy 2+ defaults to 'psycopg' (v3) for 'postgresql://', but psycopg2-binary uses 'postgresql+psycopg2://'
+if db_url.startswith("postgres://"):
+    db_url = db_url.replace("postgres://", "postgresql+psycopg2://", 1)
+elif db_url.startswith("postgresql://") and not db_url.startswith("postgresql+"):
+    db_url = db_url.replace("postgresql://", "postgresql+psycopg2://", 1)
+
+is_sqlite = db_url.startswith("sqlite")
 
 connect_args = {"check_same_thread": False} if is_sqlite else {}
 
 engine = create_engine(
-    settings.DATABASE_URL,
+    db_url,
     connect_args=connect_args,
     echo=settings.DEBUG,
 )
