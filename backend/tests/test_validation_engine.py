@@ -173,3 +173,12 @@ def test_partner_match_discrepancy():
     assert res.rule_code == "VAL-PTN-001"
     assert res.severity == "WARNING"
 
+
+
+def test_seal_equivalence_validation():
+    from app.services.validation.matrix import are_seals_equivalent, are_seal_sets_equivalent
+    assert are_seals_equivalent('VN-ML0871868', 'ML-VN0871868') is True
+    assert are_seals_equivalent('ML-VN 0871868', 'MLVN0871868') is True
+    assert are_seals_equivalent('0871868', 'ML-VN0871868') is True
+    assert are_seals_equivalent('ML-VN0871868', 'ML-VN0871869') is False
+    assert are_seal_sets_equivalent({'VN-ML0871868'}, {'ML-VN0871868'}) is True

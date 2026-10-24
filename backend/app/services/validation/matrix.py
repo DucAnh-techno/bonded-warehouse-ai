@@ -73,6 +73,47 @@ def _invoice_numbers_match(i1: str, i2: str) -> bool:
     return False
 
 
+def are_seals_equivalent(s1: str, s2: str) -> bool:
+    """
+    Check if two seal numbers are equivalent in shipping logistics.
+    Handles:
+    - Differences in punctuation / spaces: 'ML-VN0871868' == 'MLVN0871868' == 'ML-VN 0871868'
+    - Transposed carrier / country prefixes: 'VN-ML0871868' == 'ML-VN0871868'
+    - Carrier prefix omitted on customs/warehouse record: '0871868' == 'ML-VN0871868' (when digits >= 5)
+    """
+    c1 = re.sub(r'[^A-Z0-9]', '', str(s1).strip().upper())
+    c2 = re.sub(r'[^A-Z0-9]', '', str(s2).strip().upper())
+    if not c1 or not c2:
+        return c1 == c2
+    if c1 == c2:
+        return True
+
+    d1 = re.sub(r'\D', '', c1)
+    d2 = re.sub(r'\D', '', c2)
+    if d1 and d2 and d1 == d2 and len(d1) >= 5:
+        l1 = ''.join(sorted(re.sub(r'\d', '', c1)))
+        l2 = ''.join(sorted(re.sub(r'\d', '', c2)))
+        if l1 == l2 or not l1 or not l2:
+            return True
+    return False
+
+
+def are_seal_sets_equivalent(set_a: set, set_b: set) -> bool:
+    if set_a == set_b:
+        return True
+    for a in set_a:
+        if not any(are_seals_equivalent(a, b) for b in set_b):
+            return False
+    for b in set_b:
+        if not any(are_seals_equivalent(b, a) for a in set_a):
+            return False
+    return True
+
+
+def normalize_container_no(c: str) -> str:
+    return re.sub(r'[^A-Z0-9]', '', str(c).strip().upper())
+
+
 def _clean_po_token(p: Any) -> Optional[str]:
     if not p:
         return None
@@ -445,7 +486,7 @@ def evaluate_cross_document_matrix(
             c_list = [str(c).strip().upper() for c in h["container_numbers"] if c and str(c).strip()]
             if c_list:
                 cnt_vals[col] = ", ".join(c_list)
-                cnt_sets[col] = set(c_list)
+                cnt_sets[col] = {normalize_container_no(c) for c in c_list}
 
     cnt_errors: List[str] = []
     cnt_items = list(cnt_sets.items())
@@ -500,7 +541,7 @@ def evaluate_cross_document_matrix(
     if len(seal_items) >= 2:
         c0, s0 = seal_items[0]
         for c_other, s_other in seal_items[1:]:
-            if s0 != s_other:
+            if not are_seal_sets_equivalent(s0, s_other):
                 msg = f"Số seal không khớp giữa {COL_LABELS_VI[c0]} ({', '.join(sorted(s0))}) và {COL_LABELS_VI[c_other]} ({', '.join(sorted(s_other))})."
                 seal_errors.append(msg)
                 extra_results.append(
