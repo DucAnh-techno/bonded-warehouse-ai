@@ -93,31 +93,34 @@ def migrate_documents_table(bind: Engine = default_engine) -> None:
 
 
 def init_db() -> None:
-    """Create all SQLite tables if they do not exist."""
+    """Create all database tables if they do not exist."""
     print("Initializing database tables for Vietnamese Bonded Warehouse AI...")
     Base.metadata.create_all(bind=default_engine)
-    migrate_documents_table(default_engine)
-    columns = {c["name"] for c in inspect(default_engine).get_columns("shipments")}
-    if "entry_date" not in columns:
-        with default_engine.begin() as connection:
-            connection.execute(text("ALTER TABLE shipments ADD COLUMN entry_date DATE"))
 
-    # Preserve legacy rows while allowing an unknown quantity to remain NULL.
-    line_columns = {c["name"]: c for c in inspect(default_engine).get_columns("extracted_line_items")}
-    if not line_columns["quantity"]["nullable"]:
-        import re
-        with default_engine.begin() as connection:
-            ddl = connection.execute(text("SELECT sql FROM sqlite_master WHERE type='table' AND name='extracted_line_items'")).scalar_one()
-            indexes = connection.execute(text("SELECT sql FROM sqlite_master WHERE type='index' AND tbl_name='extracted_line_items' AND sql IS NOT NULL")).scalars().all()
-            ddl = ddl.replace("CREATE TABLE extracted_line_items", "CREATE TABLE extracted_line_items_nullable", 1)
-            ddl = re.sub(r"quantity FLOAT NOT NULL", "quantity FLOAT", ddl)
-            connection.execute(text(ddl))
-            columns_sql = ", ".join('"' + name + '"' for name in line_columns)
-            connection.execute(text(f"INSERT INTO extracted_line_items_nullable ({columns_sql}) SELECT {columns_sql} FROM extracted_line_items"))
-            connection.execute(text("DROP TABLE extracted_line_items"))
-            connection.execute(text("ALTER TABLE extracted_line_items_nullable RENAME TO extracted_line_items"))
-            for index_sql in indexes:
-                connection.execute(text(index_sql))
+    # SQLite-specific table migrations
+    if default_engine.dialect.name == "sqlite":
+        migrate_documents_table(default_engine)
+        columns = {c["name"] for c in inspect(default_engine).get_columns("shipments")}
+        if "entry_date" not in columns:
+            with default_engine.begin() as connection:
+                connection.execute(text("ALTER TABLE shipments ADD COLUMN entry_date DATE"))
+
+        # Preserve legacy rows while allowing an unknown quantity to remain NULL.
+        line_columns = {c["name"]: c for c in inspect(default_engine).get_columns("extracted_line_items")}
+        if not line_columns["quantity"]["nullable"]:
+            import re
+            with default_engine.begin() as connection:
+                ddl = connection.execute(text("SELECT sql FROM sqlite_master WHERE type='table' AND name='extracted_line_items'")).scalar_one()
+                indexes = connection.execute(text("SELECT sql FROM sqlite_master WHERE type='index' AND tbl_name='extracted_line_items' AND sql IS NOT NULL")).scalars().all()
+                ddl = ddl.replace("CREATE TABLE extracted_line_items", "CREATE TABLE extracted_line_items_nullable", 1)
+                ddl = re.sub(r"quantity FLOAT NOT NULL", "quantity FLOAT", ddl)
+                connection.execute(text(ddl))
+                columns_sql = ", ".join('"' + name + '"' for name in line_columns)
+                connection.execute(text(f"INSERT INTO extracted_line_items_nullable ({columns_sql}) SELECT {columns_sql} FROM extracted_line_items"))
+                connection.execute(text("DROP TABLE extracted_line_items"))
+                connection.execute(text("ALTER TABLE extracted_line_items_nullable RENAME TO extracted_line_items"))
+                for index_sql in indexes:
+                    connection.execute(text(index_sql))
 
     from app.db.session import SessionLocal
     from app.services.validation.config import seed_default_rules
