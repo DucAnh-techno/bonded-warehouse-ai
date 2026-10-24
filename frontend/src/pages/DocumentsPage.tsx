@@ -17,6 +17,7 @@ import {
 import { api } from '../services/api';
 import { DocumentItem, Shipment, BatchShipmentReconciliationResponse } from '../types';
 import { DocumentViewer } from '../components/documents/DocumentViewer';
+import { DocumentsPageSkeleton } from '../components/common/Skeletons';
 
 interface DocumentsPageProps {
   initialShipmentId?: string;
@@ -119,7 +120,7 @@ export const DocumentsPage: React.FC<DocumentsPageProps> = ({ initialShipmentId,
   const selected = docs.find((d) => d.id === selectedId) ?? null;
 
   if (loading) {
-    return <div className="flex items-center gap-2 text-slate-500"><Loader2 className="w-4 h-4 animate-spin" /> Đang tải…</div>;
+    return <DocumentsPageSkeleton />;
   }
 
   if (shipments.length === 0) {

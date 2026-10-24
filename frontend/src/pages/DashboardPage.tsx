@@ -20,6 +20,7 @@ import {
 import { api } from '../services/api';
 import { Shipment, ShipmentStats, ShipmentStatus } from '../types';
 import { CreateShipmentModal } from '../components/shipments/CreateShipmentModal';
+import { DashboardSkeleton } from '../components/common/Skeletons';
 
 interface Props {
   onSelectShipment?: (shipmentId: string) => void;
@@ -115,6 +116,10 @@ export const DashboardPage: React.FC<Props> = ({ onSelectShipment, onNavigateDoc
         return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-700">{status}</span>;
     }
   };
+
+  if (loading && !refreshing) {
+    return <DashboardSkeleton />;
+  }
 
   return (
     <div className="space-y-6">

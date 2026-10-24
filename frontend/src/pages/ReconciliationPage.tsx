@@ -33,6 +33,7 @@ import {
   ConsolidatedShipmentHeader,
   DocumentItem
 } from '../types';
+import { ReconciliationSkeleton, SkuMatrixSkeleton } from '../components/common/Skeletons';
 
 interface ReconciliationPageProps {
   initialShipmentId?: string;
@@ -395,12 +396,7 @@ export const ReconciliationPage: React.FC<ReconciliationPageProps> = ({
   });
 
   if (isLoadingShipments) {
-    return (
-      <div className="py-20 flex flex-col items-center justify-center text-slate-500 space-y-3">
-        <Loader2 className="w-8 h-8 animate-spin text-indigo-600" />
-        <p className="text-sm font-medium">Đang tải danh sách lô hàng...</p>
-      </div>
-    );
+    return <ReconciliationSkeleton />;
   }
 
   if (shipments.length === 0) {
@@ -1096,9 +1092,8 @@ export const ReconciliationPage: React.FC<ReconciliationPageProps> = ({
                     <tbody className="divide-y divide-slate-200">
                       {isLoadingMatrix ? (
                         <tr>
-                          <td colSpan={7} className="py-12 text-center text-slate-400">
-                            <RefreshCw className="w-5 h-5 animate-spin mx-auto mb-2 text-indigo-500" />
-                            <span>Đang nạp dữ liệu đối soát đã lưu...</span>
+                          <td colSpan={7} className="p-0">
+                            <SkuMatrixSkeleton />
                           </td>
                         </tr>
                       ) : filteredSkus.length === 0 ? (

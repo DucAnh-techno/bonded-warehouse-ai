@@ -18,6 +18,7 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { api } from '../services/api';
+import { WMSGatewaySkeleton } from '../components/common/Skeletons';
 import { 
   Shipment, 
   WMSEligibilityResponse, 
@@ -219,6 +220,10 @@ export const WMSGatewayPage: React.FC<WMSGatewayPageProps> = ({
 
   const isEligible = eligibility?.eligible === true;
   const isApproved = currentShipment?.approval_status === 'APPROVED';
+
+  if (isLoadingShipments && shipments.length === 0) {
+    return <WMSGatewaySkeleton />;
+  }
 
   return (
     <div className="space-y-6">
